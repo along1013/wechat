@@ -85,6 +85,7 @@
 		<dependency>
 			<groupId>com.alibaba.alidayu</groupId>
 			<artifactId>taobao-sdk-java-auto_1455552377940-20160607</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 

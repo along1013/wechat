@@ -1,14 +1,14 @@
 jdbcUrl = jdbc:mysql://127.0.0.1/wechat?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
 user = root
-password =
+password = 123
 devMode = true
 
 # 微信服务器回调所用的 token
 token=__bailu__token__
 
 # 测试用的账号
-appId=yourAppId
-appSecret=yourAppSecret
+appId=wxc909d3781a68cc24
+appSecret=512e75382007ed8f7554c14fbd9390d1
 
 #是否对消息进行加密，是否对消息进行加密，对应于微信平台的消息加解密方式，false支持明文模式及兼容模式，true支持安全模式及兼容模式
 #encryptMessage=true
