@@ -16,7 +16,7 @@ appSecret=512e75382007ed8f7554c14fbd9390d1
 
 #####业务逻辑中的华丽的分割线#########
 #授权域名
-domain=xxxx
+domain=http://121.43.58.238/wechat
 #百度翻译 http://api.fanyi.baidu.com/api/trans/product/index
 bt_appId=xxxx
 bt_appKey=xxxx

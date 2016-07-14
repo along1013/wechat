@@ -52,32 +52,32 @@ public class RedirectUri extends ApiController{
 			String json=snsAccessToken.getJson();
 			System.out.println("json>>"+json);
 			String token=snsAccessToken.getAccessToken();
-System.out.println("token:"+token);
+			System.out.println("token:"+token);
 			String openId=snsAccessToken.getOpenid();
 			//拉取用户信息(需scope为 snsapi_userinfo)
 			ApiResult apiResult=SnsApi.getUserInfo(token, openId);
-System.out.println("openId:"+openId);	
+			System.out.println("openId:"+openId);
 			JSONObject jsonObject=JSON.parseObject(apiResult.getJson());
-System.out.println(jsonObject.toString());
-			String nickname=jsonObject.getString("nickname");
-			String sex=jsonObject.getString("sex");
-			String city=jsonObject.getString("city");
-			String province=jsonObject.getString("province");
-			String country=jsonObject.getString("country");
-			String headimgurl=jsonObject.getString("headimgurl");
+			System.out.println(jsonObject.toString());
+//			String nickname=jsonObject.getString("nickname");
+//			String sex=jsonObject.getString("sex");
+//			String city=jsonObject.getString("city");
+//			String province=jsonObject.getString("province");
+//			String country=jsonObject.getString("country");
+//			String headimgurl=jsonObject.getString("headimgurl");
 			
-			System.out.println("nickname:"+nickname);
-			try {
-				System.out.println("nickname:"+URLEncoder.encode(nickname, "utf-8"));
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("sex:"+sex);//用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
-			System.out.println("city:"+city);//城市
-			System.out.println("province:"+province);//省份
-			System.out.println("country:"+country);//国家
-			System.out.println("headimgurl:"+headimgurl);
+//			System.out.println("nickname:"+nickname);
+//			try {
+//				System.out.println("nickname:"+URLEncoder.encode(nickname, "utf-8"));
+//			} catch (UnsupportedEncodingException e) {
+//				 TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.println("sex:"+sex);//用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+//			System.out.println("city:"+city);//城市
+//			System.out.println("province:"+province);//省份
+//			System.out.println("country:"+country);//国家
+//			System.out.println("headimgurl:"+headimgurl);
 			
 			renderText("apiResult:"+apiResult.getJson());
 		}else {

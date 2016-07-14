@@ -12,9 +12,12 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
+import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+import com.jfinal.weixin.dao.SmsInfo;
+import com.jfinal.weixin.dao.UserInfo;
 import com.jfinal.weixin.sdk.api.ApiConfigKit;
-import com.jfinal.weixin.share.ShareController;
 import com.jfinal.weixin.usercontroller.UserController;
 import com.jfinal.weixin.weboauth2.RedirectUri;
 /**
@@ -49,18 +52,23 @@ public class WeixinConfig extends JFinalConfig {
 	public void configRoute(Routes me) {
 		me.add("/msg", WeixinMsgController.class);
 		me.add("/api", WeixinApiController.class, "/api");
-		me.add("/pay", WeixinPayController.class);
-		me.add("/", IndexController.class,"/index");
+//		me.add("/pay", WeixinPayController.class);
+		me.add("/checkState", IndexController.class);
 		me.add("/oauth2",RedirectUri.class);
 		me.add("/user",UserController.class);
-		me.add("/jssdk",ShareController.class,"_front");
+//		me.add("/jssdk",ShareController.class,"_front");
 
 	}
 	
 	public void configPlugin(Plugins me) {
-		// C3p0Plugin c3p0Plugin = new C3p0Plugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
-		// me.add(c3p0Plugin);
-		
+		 C3p0Plugin c3p0Plugin = new C3p0Plugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
+		 me.add(c3p0Plugin);
+
+		ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
+		me.add(arp);
+
+		arp.addMapping("user_info", UserInfo.class);
+		arp.addMapping("sms_info",SmsInfo.class);
 		// EhCachePlugin ecp = new EhCachePlugin();
 		// me.add(ecp);
 		

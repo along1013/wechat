@@ -7,6 +7,7 @@
 package com.jfinal.weixin.demo;
 
 import com.jfinal.core.Controller;
+import com.jfinal.weixin.dao.UserInfo;
 
 /**
  * @author Javen
@@ -14,7 +15,12 @@ import com.jfinal.core.Controller;
  */
 public class IndexController extends Controller {
 	public void index(){
-		setAttr("test", "这里是测试...");
-		render("index.jsp");
+		renderText("success");
+	}
+
+	public void test(){
+		UserInfo userInfo = UserInfo.dao.findById(1);
+		System.out.println(userInfo.get("name"));
+		renderText(userInfo.getStr("name"));
 	}
 }
